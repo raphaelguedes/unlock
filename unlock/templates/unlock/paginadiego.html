@@ -1,0 +1,17 @@
+    <h4 style="padding-left:20px"><b><i class="fa fa-exclamation-triangle"></i> Alerta</b></h4>
+    {%csrf_token%}
+{% if alerta %}
+{% for Botao in alerta %}
+
+      <div class="w3-container  w3-padding-16">
+      <div class="w3-left"><i class="fa fa-exclamation-circle" style="font-size:55px;color:Red;"></i></div>
+          <h4 style="text-decoration:none; font-weight: bold; padding-left:60px;padding-top:2px"><a href= "#" style="text-decoration:none; font-weight: bold;" >{{ Botao.nome_botao }}</a></h4>
+        <h5>Telefone: {{ Botao.telefone_botao }}</h5>
+        <h5 style="padding-left:48px;">E-mail: {{ Botao.email_botao }}</h5>
+        <h5 style="padding-left:48px;">Endereço: {{ Botao.endereco_botao }}, {{ Botao.cep }}</h5>
+        </div>
+{% endfor %}
+{% else %}
+    <p style="padding-left:20px">Sem alertas no momento.</p>
+{% endif%}
+</div>
