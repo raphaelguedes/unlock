@@ -9,6 +9,8 @@ from django.contrib.auth.forms import PasswordResetForm
 from django.http import HttpResponse
 #from django.template import loader
 
+
+from .models import Lampada
 ##################
 from .models import Botao
 from .models import Status
@@ -20,6 +22,7 @@ from .models import Setor
 from .models import Pessoas
 from .models import Acesso
 from .models import Registro
+#############################
 from django.shortcuts import redirect
 from django.core.exceptions import ObjectDoesNotExist
 ##########################
@@ -388,3 +391,20 @@ def alerta (request, key):
 #	return render(request, 'unlock/room.html', {
 #		'room_name_json': mark_safe(json.dumps(room_name))
 #		})
+
+def aula(request):
+	if not request.user.is_authenticated:
+		return render(request, 'unlock/entrar.html')
+	lista = Lampada.objects.order_by('numero_lampada') #[:5]
+	context = {'lista': lista}
+	return render(request, 'unlock/aula.html', context)
+
+def ligarlampada(request):
+	lampada = request.POST['lampada']
+	Lampada.objects.filter(id=lampada).update(status=True)
+	return redirect('aula')
+
+def desligarlampada(request):
+	lampada = request.POST['lampada']
+	Lampada.objects.filter(id=lampada).update(status=False)
+	return redirect('aula')

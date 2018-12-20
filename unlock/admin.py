@@ -10,6 +10,7 @@ from .models import Botao
 from .models import Status
 from .models import Registrobotao
 ###################
+from .models import Lampada
 
 admin.site.register(Setor)
 admin.site.register(Pessoas)
@@ -19,3 +20,4 @@ admin.site.register(Registro)
 admin.site.register(Botao)
 admin.site.register(Status)
 admin.site.register(Registrobotao)
+admin.site.register(Lampada)

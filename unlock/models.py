@@ -80,3 +80,9 @@ class Registrobotao(models.Model):
 	def __str__(self):
 		return str(self.data_acesso.strftime("%d %m %Y-%H:%M:%S"))
 
+
+class Lampada(models.Model):
+	numero_lampada = models.IntegerField(default=0)
+	status =  models.BooleanField(default=False)
+	def __str__(self):
+		return str(self.numero_lampada)

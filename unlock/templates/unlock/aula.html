@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+body {
+     background-color:#99ddff;
+}
+</style>
+
+
+<body>
+
+<div>
+<h2>Aula 1</h2>
+<h2>Ex 1</h2>
+<p id="result">Resultado</p>
+
+
+<p id="demo">JavaScript can change HTML content.</p>
+
+<button type="button" onclick='document.getElementById("demo").innerHTML = "Hello JavaScript!"'>Click Me!</button>
+
+</div>
+
+ <br></br>
+
+ <div>
+
+<img id="luz1" src="http://ap.imagensbrasil.org/images/lampada-apagada.jpg" style="width:100px">
+
+<button onclick="document.getElementById('luz1').src='http://ap.imagensbrasil.org/images/lampada-apagada.jpg'">OFF</button>
+<button onclick="document.getElementById('luz1').src='http://i.stack.imgur.com/ybxlO.jpg'">ON</button>
+
+</div>
+
+ <br></br>
+
+<div>
+
+<h2 style="color:red;">Ex 2</h2>
+
+<p id="ex2">JavaScript can change HTML content.</p>
+
+<script>
+var text = "";
+var i;
+for (i = 0; i < 10; i++) {
+    text += "Mudou " + i + "<br>";
+}
+</script>
+
+<button type="button" onclick='document.getElementById("ex2").innerHTML = text'>Click Me!</button>
+</div>
+
+<br></br>
+
+ <div>
+
+<h2 style="color:red;">Ex 3</h2>
+
+<img id="luz2" src="http://ap.imagensbrasil.org/images/lampada-apagada.jpg" style="width:100px">
+
+<button onclick="document.getElementById('luz2').src='http://ap.imagensbrasil.org/images/lampada-apagada.jpg'">OFF</button>
+<button onclick="document.getElementById('luz2').src='http://i.stack.imgur.com/ybxlO.jpg'">ON</button>
+
+<img id="luz3" src="http://ap.imagensbrasil.org/images/lampada-apagada.jpg" style="width:100px">
+
+<button onclick="document.getElementById('luz3').src='http://ap.imagensbrasil.org/images/lampada-apagada.jpg'">OFF</button>
+<button onclick="document.getElementById('luz3').src='http://i.stack.imgur.com/ybxlO.jpg'">ON</button>
+
+<img id="luz4" src="http://ap.imagensbrasil.org/images/lampada-apagada.jpg" style="width:100px">
+
+<button onclick="document.getElementById('luz4').src='http://ap.imagensbrasil.org/images/lampada-apagada.jpg'">OFF</button>
+<button onclick="document.getElementById('luz4').src='http://i.stack.imgur.com/ybxlO.jpg'">ON</button>
+
+<img id="luz5" src="http://ap.imagensbrasil.org/images/lampada-apagada.jpg" style="width:100px">
+
+<button onclick="document.getElementById('luz5').src='http://ap.imagensbrasil.org/images/lampada-apagada.jpg'">OFF</button>
+<button onclick="document.getElementById('luz5').src='http://i.stack.imgur.com/ybxlO.jpg'">ON</button>
+
+<img id="luz6" src="http://ap.imagensbrasil.org/images/lampada-apagada.jpg" style="width:100px">
+
+<button onclick="document.getElementById('luz6').src='http://ap.imagensbrasil.org/images/lampada-apagada.jpg'">OFF</button>
+<button onclick="document.getElementById('luz6').src='http://i.stack.imgur.com/ybxlO.jpg'">ON</button>
+
+<img id="luz7" src="http://ap.imagensbrasil.org/images/lampada-apagada.jpg" style="width:100px">
+
+<button onclick="document.getElementById('luz7').src='http://ap.imagensbrasil.org/images/lampada-apagada.jpg'">OFF</button>
+<button onclick="document.getElementById('luz7').src='http://i.stack.imgur.com/ybxlO.jpg'">ON</button>
+</div>
+
+<h2 style="color:red;">Ex 4</h2>
+
+{% if lista %}
+    <ul>
+   
+
+    {% for Lampada in lista %}
+    
+        <li><a> Numero da lampada: {{ Lampada.id }}</a></li> 
+        <br>
+        {% if Lampada.status == False %}
+          <form method="POST" action="/unlock/ligarlampada">
+          {%csrf_token%}
+          <input type="hidden" name="lampada" value="{{ Lampada.id }}">
+          <button type="submit" type="submit" class="w3-text-red">Ligar  <i class="fa fa-unlock"></i></button>
+          <img src="http://ap.imagensbrasil.org/images/lampada-apagada.jpg" style="width:100px">
+          </form>
+          {% else %}
+          <form method="POST" action="/unlock/desligarlampada">
+          {%csrf_token%}
+          <input type="hidden" name="lampada" value="{{ Lampada.id }}">
+          <button type="submit" type="submit" class="w3-text-green">Desligar  <i class="fa fa-lock"></i></button>
+          <img src="http://i.stack.imgur.com/ybxlO.jpg" style="width:100px">
+          </form>
+        {% endif %}
+        <br>
+
+        
+    {% endfor %}
+
+    </ul>
+{% else %}
+    <p>Sem lampadas.</p>
+{% endif %}
+
+<br>
+
+<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/646643/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+
+
+</body>
+</html>

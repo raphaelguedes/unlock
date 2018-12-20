@@ -49,6 +49,9 @@ urlpatterns = [
 	url(r'^add_botao_controller$', views.add_botao_controller, name='add_botao_controller'),
 	url(r'^normalizar$', views.normalizar, name='normalizar'),
 	url(r'^alerta/(?P<key>\w+)$', views.alerta, name='alerta'),
+	url(r'^aula$', views.aula, name='aula'),
+	url(r'^ligarlampada$', views.ligarlampada, name='ligarlampada'), #ligar lampada
+	url(r'^desligarlampada$', views.desligarlampada, name='desligarlampada'), #desligar lampada
 #	url(r'^chat$', views.chat, name='chat'),
 #	url(r'^(?P<room_name>[^/]+)/$', views.room, name='room'),
 ]
