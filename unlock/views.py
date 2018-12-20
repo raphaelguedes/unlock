@@ -39,7 +39,7 @@ def login_controller(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
-       	return redirect('index')
+       	return redirect('projetos')
     else:
         return HttpResponse ("Login invalido")
 
@@ -70,9 +70,14 @@ def logout_controller(request):
     return redirect('entrar')
 
 def teste(request):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return render(request, 'unlock/erro.html')
     return render(request, 'unlock/teste.html',)
+
+def projetos(request):
+    if not request.user.is_authenticated:
+        return render(request, 'unlock/erro.html')
+    return render(request, 'unlock/projetos.html',)
 
 def index(request):
 	if not request.user.is_authenticated:

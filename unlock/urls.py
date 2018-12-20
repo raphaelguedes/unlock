@@ -32,6 +32,7 @@ urlpatterns = [
 	url(r'^add_pessoa$', views.add_pessoa, name='add_pessoa'), #adicionar pessoa
 	url(r'^add_pessoa_controller$', views.add_pessoa_controller, name='add_pessoa_controller'), #controller
 	url(r'^teste$', views.teste, name='teste'),
+	url(r'^projetos$', views.projetos, name='projetos'),
 	url(r'^add_acesso$', views.add_acesso, name='add_acesso'), #adicionar acesso
 	url(r'^add_acesso_controller$', views.add_acesso_controller, name='add_acesso_controller'), #controller
 	url(r'^blq_acesso_controller$', views.blq_acesso_controller, name='blq_acesso_controller'), #bloquear acesso
